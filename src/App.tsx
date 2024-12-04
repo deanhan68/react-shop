@@ -1,11 +1,23 @@
+// src/App.tsx
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
+import CatalogPage from './pages/CatalogPage';
+import Header from './components/Header';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Hello, World!96</h1> {/* Просто текст для проверки */}
-    </div>
+    <Router>
+      <Header /> {/* Это шапка с навигацией */}
+      <div>
+        <Routes>
+          <Route path="/" element={<HomePage />} /> {/* Главная страница */}
+          <Route path="/catalog" element={<CatalogPage />} /> {/* Страница каталога */}
+          <Route path="/cart" element={<CartPage />} /> {/* Страница корзины */}
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
