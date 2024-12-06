@@ -1,0 +1,169 @@
+/* Общие стили для body и html */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
+    font-family: Arial, sans-serif;
+    box-sizing: content-box;
+  }
+  
+  /* Главная страница */
+  .homepage {
+    min-height: 100vh; /* Занимает всю высоту экрана */
+    display: flex;
+    flex-direction: column; /* Вертикальная ориентация элементов */
+    background-color: #121212; /* Темный фон */
+    color: #fff; /* Белый текст */
+    padding: 20px;
+    padding-top: 70px; /* Даем пространство для шапки */
+    overflow-y: auto; /* Добавляем вертикальный скролл */
+  }
+  
+  /* Шапка */
+  header {
+    position: relative;
+    z-index: 10;
+    background-color: #1e6dc2;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Легкая тень для шапки */
+
+  }
+  
+  /* Слайдер */
+  .slider {
+    display: flex;
+    gap: 100px;
+    overflow-x: auto; /* Горизонтальный скролл для слайдера */
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  .slider-item {
+    flex: 0 0 70%; /* Уменьшаем ширину слайда до 70% */
+    height: 400px; /* Высота слайдера */
+    background: #ddd; /* Серый фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease; /* Плавная анимация при наведении */
+  }
+  
+
+.slider-item:hover {
+    transform: scale(1.05); /* Увеличение слайда при наведении */
+  }
+
+  /* Ограничиваем ширину изображений внутри слайдера */
+.slider-item img {
+    object-fit: contain; /* Сохраняем пропорции изображения */
+  }
+  
+  /* Секция популярных товаров */
+  .popular-section {
+    margin-top: 30px;
+  }
+
+  .popular-section h2 {
+    margin-left: 30px;
+  }
+  
+  .popular-items {
+    display: grid; /* Используем Grid Layout */
+    grid-template-columns: repeat(3, 1fr); /* Три колонки одинаковой ширины */
+    gap: 20px; /* Отступы между карточками */
+    padding: 10px; /* Внутренние отступы контейнера */
+  }
+  
+  /* Карточка */
+/* Карточки */
+.item-card {
+    background: #1f1f1f;
+    text-align: center;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация */
+    gap:10px;
+  }
+
+  
+  .item-card:hover {
+    transform: translateY(-5px); /* Поднимаем карточку */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Увеличиваем тень */
+    background-color: #292929; /* Темный фон при наведении */
+  }
+  
+  .item-image {
+    height: 150px;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Плавный переход фона */
+  }
+  
+  .item-image:hover {
+    background-color: #6a5acd; /* Фиолетовый фон при наведении */
+  }
+  
+  /* Футер */
+  .footer {
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: auto; /* Отправляет футер в конец страницы */
+    border-top: 2px solid #ffffff;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .item-card {
+      flex: 0 1 calc(50% - 20px); /* 2 карточки в ряд */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .item-card {
+      flex: 0 1 100%; /* 1 карточка в ряд */
+    }
+  }
+  
+  /* Кнопки и ссылки */
+  button {
+    background-color: #6a5acd; /* Фиолетовый цвет кнопки */
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #4a3eac; /* Более темный фиолетовый при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+  }
+  
+  a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+    transition: color 0.3s ease; /* Плавная анимация для ссылок */
+  }
+  
+  a:hover {
+    color: #535bf2; /* Цвет ссылки при наведении */
+  }
+  
