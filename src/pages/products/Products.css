@@ -1,0 +1,31 @@
+.item-card {
+
+  height: 500px;
+  width: 300px;
+  color: #fff;
+    background: #1f1f1f;
+    text-align: center;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация */
+    gap:10px;
+    .card-image {
+      height: 300px;
+      background: #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+  
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  
+  .item-card:hover {
+    transform: translateY(-5px); /* Поднимаем карточку */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Увеличиваем тень */
+    background-color: #292929; /* Темный фон при наведении */
+  }

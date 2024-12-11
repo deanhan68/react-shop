@@ -1,4 +1,4 @@
-export const json = {
+const json = {
     id: '1',
     categories: [
         {
@@ -170,4 +170,8 @@ export const json = {
             urlImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqK7U-WOjGrvPt8NcdwAbyTFqPrETAwFIAOw&s',
         },
     ]
+}
+
+export const getCategories  = () => {
+    return json.categories
 }
