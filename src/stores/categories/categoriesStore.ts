@@ -1,6 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
 import { ICategories } from "./types";
-import { getCategories } from "../../api/data";
 
 
 
@@ -16,7 +15,7 @@ class CategoriesStore {
     }
 
     GetCategories = () => {
-        const categories = getCategories()
+        const categories: any = []
         this.setCategories(categories)
     }
 }

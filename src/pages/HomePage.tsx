@@ -2,6 +2,7 @@ import React from 'react';
 import './HomePage.css'; // Подключаем стили
 
 const HomePage: React.FC = () => {
+  
   return (
     <div className="homepage">
       {/* Слайдер */}

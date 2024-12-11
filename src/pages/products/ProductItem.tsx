@@ -1,15 +1,10 @@
-import './Products.css'
-interface ICard {
-    id: string
-    title: string
-    price: number
-    urlImg:string
-    sale: number
-}
-export const ProductItem = (card: ICard) => {
+import { IProduct } from '../../stores/products/types'
 
-    console.log('card', card);
-    
+import './Products.css'
+
+
+
+export const ProductItem = (card: IProduct) => {
 
     return <>
         <div className="item-card">

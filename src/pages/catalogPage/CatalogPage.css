@@ -12,9 +12,12 @@
   }
   
   .catalog {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+    display: flex;
     gap: 20px;
+    justify-content: center;
+
   }
   
   .product-card {

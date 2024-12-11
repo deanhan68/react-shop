@@ -1,19 +1,38 @@
 import { useParams } from "react-router-dom"
-import { getCategories } from "../../api/data"
 import { ProductItem } from "./ProductItem"
+import { useEffect, useState } from "react"
+import { ICategories } from "../../stores/categories/types"
+import { IProduct } from "../../stores/products/types"
 
 export const Products = () => {
 
-    const cats = getCategories()
+    const [categories, setCategories] = useState<ICategories[]>([])
+    const [products, setProducts] = useState<IProduct[]>([])
 
-    const params = useParams()
+    useEffect(() => {
+      fetch("https://6759b537099e3090dbe2a885.mockapi.io/data")
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          setCategories(data)
+        })
+    }, [])
 
-    console.log('p', params);
+    useEffect(()=>{
+        console.log('cats', categories);
+        
+        const products = categories
+        .map(cat => {return cat.data })
+        .flat(2)
+
+        setProducts(products)
+    }, [categories])
+
+   
+
     
-
-    const products = cats
-    .map(cat => {return cat.data })
-    .flat(2)
+   
 
     return <div style={{
         marginTop: 20,
@@ -24,8 +43,8 @@ export const Products = () => {
 
     }}>
         {
-            products.map(card => {
-                return <ProductItem {...card} />
+            products.map(product => {
+                return <ProductItem {...product} />
             })
         }
     </div>

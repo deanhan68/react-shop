@@ -2,15 +2,23 @@ import React, { useEffect, useState } from 'react';
 import './CatalogPage.css'; // Подключите стили для страницы
 import { categoriesStore } from '../../stores/categories/categoriesStore';
 import { observer } from 'mobx-react';
-import { getCategories } from '../../api/data';
 import { ICategories } from '../../stores/categories/types';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 
 const CatalogPage: React.FC = observer(() => {
 
-  useEffect(()=>{
-    categoriesStore.GetCategories()
+  const [categories, setCategories] = useState<ICategories[]>([])
+
+  useEffect(() => {
+    fetch("https://6759b537099e3090dbe2a885.mockapi.io/data")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setCategories(data)
+      })
+
   }, [])
 
  
@@ -33,7 +41,7 @@ const CatalogPage: React.FC = observer(() => {
       </header>
       <main className="catalog">
         {
-            getCategories().map(category => {
+            categories.map(category => {
               return (
                 <div className="product-card">
                   <div className="product-image">
