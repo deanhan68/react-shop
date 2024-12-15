@@ -1,1 +1,1 @@
-export const DEFINE_SALE = 500
+export const DEFINE_SALE = 400
