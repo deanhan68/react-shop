@@ -1,38 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import './CatalogPage.css'; // Подключите стили для страницы
-import { categoriesStore } from '../../stores/categories/categoriesStore';
-import { observer } from 'mobx-react';
-import { ICategories } from '../../stores/categories/types';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react'
+import { observer } from 'mobx-react'
+import { useNavigate } from 'react-router-dom'
+
+import { categoriesStore } from '../../stores/categories/categoriesStore'
+import { ICategories } from '../../stores/categories/types'
+
+import './CatalogPage.css' // Подключите стили для страницы
 
 
-const CatalogPage: React.FC = observer(() => {
-
-  const [categories, setCategories] = useState<ICategories[]>([])
-
+const CatalogPage = observer(() => {
   useEffect(() => {
-    fetch("https://6759b537099e3090dbe2a885.mockapi.io/data")
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setCategories(data)
-      })
-
+   categoriesStore.GetCategories().then()
   }, [])
 
- 
   const history = useNavigate()
-  const location = useLocation()
-
-
-
-  console.log(categoriesStore.categories);
 
   const goToByCategory = (cat: ICategories) => {
     history(`/products/${cat.id}`)
   }
-  
+
 
   return (
     <div className="catalog-page">
@@ -41,9 +27,9 @@ const CatalogPage: React.FC = observer(() => {
       </header>
       <main className="catalog">
         {
-            categories.map(category => {
+            categoriesStore.categories.map(category => {
               return (
-                <div className="product-card">
+                <div className="product-card" key={category.id}>
                   <div className="product-image">
                     <img src={category.urlImg} alt={category.name} />
                   </div>
@@ -55,7 +41,7 @@ const CatalogPage: React.FC = observer(() => {
         }
       </main>
     </div>
-  );
+  )
 })
 
-export default CatalogPage;
+export default CatalogPage

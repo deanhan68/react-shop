@@ -1,23 +1,28 @@
-import { action, makeObservable, observable } from "mobx";
-import { ICategories } from "./types";
+import { action, makeObservable, observable } from "mobx"
+import {categoriesService} from "../../services/categoriesService/categoriesService.ts"
+import { ICategories } from "./types"
 
 
 
 class CategoriesStore {
-    categories: ICategories[] = []
+    @observable categories: ICategories[] = []
 
     constructor(){
         makeObservable(this)
     }
 
-   setCategories = (value: ICategories[]) => {
+   @action setCategories = (value: ICategories[]) => {
         this.categories = value
     }
 
-    GetCategories = () => {
-        const categories: any = []
-        this.setCategories(categories)
-    }
+   GetCategories = async () => {
+       const response = await categoriesService.GetCategories()
+
+       if(response && response.data){
+           this.setCategories(response.data)
+       }
+
+   }
 }
 
 export const categoriesStore = new CategoriesStore()

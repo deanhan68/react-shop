@@ -1,38 +1,25 @@
-import { useParams } from "react-router-dom"
+import { observer } from "mobx-react"
+import { productsStore } from "../../stores/products/productsStore"
 import { ProductItem } from "./ProductItem"
-import { useEffect, useState } from "react"
-import { ICategories } from "../../stores/categories/types"
-import { IProduct } from "../../stores/products/types"
+import { useEffect } from "react"
+import { useLocation, useParams } from "react-router-dom"
 
-export const Products = () => {
 
-    const [categories, setCategories] = useState<ICategories[]>([])
-    const [products, setProducts] = useState<IProduct[]>([])
+
+export const Products = observer(() => {
+
+    const params = useParams()
+    const {pathname} = useLocation()
+    
 
     useEffect(() => {
-      fetch("https://6759b537099e3090dbe2a885.mockapi.io/data")
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          setCategories(data)
-        })
-    }, [])
-
-    useEffect(()=>{
-        console.log('cats', categories);
-        
-        const products = categories
-        .map(cat => {return cat.data })
-        .flat(2)
-
-        setProducts(products)
-    }, [categories])
-
-   
-
+        if(params && params.cat) {
+            productsStore.GetProductsByCategory(params.cat).then()
+        } else if(pathname === '/products') {
+            productsStore.GetProducts().then()
+        }
+    }, [params, pathname])
     
-   
 
     return <div style={{
         marginTop: 20,
@@ -43,9 +30,9 @@ export const Products = () => {
 
     }}>
         {
-            products.map(product => {
-                return <ProductItem {...product} />
+           productsStore.products.map(product => {
+                return <ProductItem {...product} key={product.id}/>
             })
         }
     </div>
-}
+})

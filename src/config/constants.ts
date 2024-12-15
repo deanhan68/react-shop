@@ -1,0 +1,1 @@
+export const DEFINE_SALE = 500

@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css'; // Добавим файл для стилей
+import { Link } from 'react-router-dom'
 
-const Header: React.FC = () => {
+import './Header.css' // Добавим файл для стилей
+
+
+const Header = () => {
   return (
     <header className="header">
       <h1 className="logo">Спорт магазин</h1>
@@ -13,7 +14,7 @@ const Header: React.FC = () => {
         <Link to="/cart">Корзина</Link>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

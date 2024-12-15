@@ -1,13 +1,13 @@
-// src/App.tsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import CartPage from './pages/cartPage/CartPage';
-import CatalogPage from './pages/catalogPage/CatalogPage';
-import Header from './components/header/Header';
-import { Products } from './pages/products/Products';
+import {Route, Routes} from "react-router-dom"
 
-const App: React.FC = () => {
+import HomePage from './pages/HomePage'
+import CartPage from './pages/cartPage/CartPage'
+import CatalogPage from './pages/catalogPage/CatalogPage'
+import Header from './components/header/Header'
+import { Products } from './pages/products/Products'
+
+
+const App = () => {
   return (
     <>
       <Header /> {/* Это шапка с навигацией */}
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         </Routes>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

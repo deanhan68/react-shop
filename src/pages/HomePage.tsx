@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import './HomePage.css'; // Подключаем стили
+import { productsStore } from '../stores/products/productsStore'
+import { ProductItem } from './products/ProductItem';
+import { DEFINE_SALE } from '../config/constants';
+import { observer } from 'mobx-react';
+import { useLocation } from 'react-router-dom';
 
-const HomePage: React.FC = () => {
+
+
+const HomePage: React.FC = observer(() => {
+
+  const {pathname} = useLocation()
+
+  useEffect(() => {
+    if(pathname === '/'){
+      productsStore.GetProductsWithSale(DEFINE_SALE).then()
+    }
+  }, [pathname])
+
+  console.log(productsStore.products);
   
+  
+
   return (
     <div className="homepage">
       {/* Слайдер */}
@@ -16,7 +35,13 @@ const HomePage: React.FC = () => {
       <div className="popular-section">
         <h2>Популярные товары</h2>
         <div className="popular-items">
-          <div className="item-card">
+          {
+            productsStore.products.map(product => {
+              return <ProductItem {...product} key={product.id}/>
+          })
+          }
+
+          {/* <div className="item-card">
             <div className="item-image">Заглушка</div>
             <h3>Спортивный костюм</h3>
             <p>Цена: 5000 руб.</p>
@@ -51,7 +76,7 @@ const HomePage: React.FC = () => {
             <h3>Кроссовки</h3>
             <p>Цена: 7000 руб.</p>
             <button>Заказать</button>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -61,7 +86,7 @@ const HomePage: React.FC = () => {
         <p>Контакты: info@shop.com | +7 (999) 123-45-67</p>
       </footer>
     </div>
-  );
-};
+  )
+})
 
 export default HomePage;
