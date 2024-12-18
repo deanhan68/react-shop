@@ -75,9 +75,12 @@ body, html {
   }
   
   .popular-items {
-    display: grid; /* Используем Grid Layout */
-    grid-template-columns: repeat(3, 1fr); /* Три колонки одинаковой ширины */
-    gap: 20px; /* Отступы между карточками */
+    /*display: grid; /* Используем Grid Layout */
+    /*grid-template-columns: repeat(3, 1fr); /* Три колонки одинаковой ширины */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Отступы между карточками */
     padding: 10px; /* Внутренние отступы контейнера */
   }
   

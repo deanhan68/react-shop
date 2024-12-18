@@ -1,0 +1,13 @@
+.ant-skeleton {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+}
+.ant-skeleton .ant-skeleton-header .ant-skeleton-avatar-lg {
+    width: 300px;
+    height: 350px;
+}
+
+.ant-skeleton .ant-skeleton-header .ant-skeleton-avatar-circle {
+    border-radius: 0;
+}

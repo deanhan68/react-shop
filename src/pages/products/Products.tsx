@@ -3,6 +3,7 @@ import { productsStore } from "../../stores/products/productsStore"
 import { ProductItem } from "./ProductItem"
 import { useEffect } from "react"
 import { useLocation, useParams } from "react-router-dom"
+import { CustomSkeleton } from "../../components/customSkeleton/CustomSkeleton"
 
 
 
@@ -30,7 +31,9 @@ export const Products = observer(() => {
 
     }}>
         {
-           productsStore.products.map(product => {
+           productsStore.loading 
+           ? Array.from({length: 8}, (_, i)=>i).map(item => <CustomSkeleton key={item} />) 
+           : productsStore.products.map(product => {
                 return <ProductItem {...product} key={product.id}/>
             })
         }

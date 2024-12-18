@@ -9,6 +9,8 @@ class ProductsStore {
     @observable products: IProduct[] = []
     @observable categories: ICategories[] = []
 
+    @observable loading = false
+
     constructor(){
         makeObservable(this)
     }
@@ -18,6 +20,7 @@ class ProductsStore {
     }
 
     GetProducts = async () => {
+        this.setLoading(true)
         const cats = await categoriesService.GetCategories()
         if(cats?.data && cats?.data.length > 0 ){
             this.categories = cats.data
@@ -26,7 +29,7 @@ class ProductsStore {
                 .flat(2)
             this.setProducts(products)
         }
- 
+        this.setLoading(false)
     }
 
     GetProductsByCategory = async (categoryId: string) => {
@@ -54,6 +57,10 @@ class ProductsStore {
         })
 
         this.setProducts(findProducts)
+    }
+
+    @action setLoading = (value: boolean) => {
+        this.loading = value
     }
 }
 
