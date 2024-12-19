@@ -91,7 +91,7 @@ const CartPage = observer(() => {
             <Col span={7} style={{width: '100%', padding: 15, border: '1px solid grey', height: 175}}>
               <Row gutter={[12, 12]} align={'middle'} justify={'space-between'} >
                <Row>
-               <Col span={20}><h3>Ваша корзина: {cartStore.total.totalCount} товар</h3></Col>
+               <Col span={20}><h3>Ваша корзина: {cartStore.total.totalCount} шт.</h3></Col>
                 <Col span={20}><h3>Товары {`(${cartStore.total.totalCount})`}: {cartStore.total.totalPrice} руб.
                  </h3></Col>
                </Row>
