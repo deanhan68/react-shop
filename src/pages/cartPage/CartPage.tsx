@@ -6,13 +6,14 @@ import { cartStore } from "../../stores/cartStore/cartStore";
 import { observer } from "mobx-react";
 import { ICartProduct } from "stores/cartStore/types";
 import { Link, useNavigate } from "react-router-dom";
-import { ICategories } from "stores/categories/types";
-import { log } from "console";
+import { CartModal } from "./CartModal";
+import { useState } from "react";
 
 
 
 // src/pages/CartPage.tsx
 const CartPage = observer(() => {
+  const [visible, setVisible] = useState(false)
 
   const navigate = useNavigate()
 
@@ -20,7 +21,7 @@ const CartPage = observer(() => {
 
     Modal.confirm({
       icon: <ExclamationCircleOutlined />,
-        content: <Typography.Paragraph>Are you sure?</Typography.Paragraph>,
+        content: <Typography.Paragraph>Вы уверены что хотите удалить товар?</Typography.Paragraph>,
         onOk() {
           cartStore.deleteCard(card)
         }
@@ -42,18 +43,7 @@ const CartPage = observer(() => {
   }
 
   const onSend = () => {
-    Modal.info({
-      title: 'Товары...',
-      content: (
-        <div>
-          <p>Данные и товары были отправлены!</p>
-          <p>Проверьте вашу почту</p>
-        </div>
-      ),
-      onOk() {
-        console.log('Данные и товары были отправлены!')
-      }
-    })
+    setVisible(true)
   }
 
 
@@ -84,14 +74,14 @@ const CartPage = observer(() => {
                         <Typography.Paragraph>{item.title}</Typography.Paragraph></Col>
                       <Col span={5}><Button type="dashed">
                         {productsStore.categories.find((c: any)=> c.id === item.categoryId)?.name}</Button></Col>
-                      <Col span={3}><Button type="text">{item.price}</Button></Col>
+                      <Col span={3}><Button type="text">{item.price} руб.</Button></Col>
                       <Col span={3}><Button type="primary" onClick={()=> deleteCardFromCart(item)}>Удалить</Button></Col>
                     </Row>
                   )
                 })
                 : <div>
-                  <Typography.Paragraph>Воспользуйтесь поиском, чтобы найти всё, что нужно, 
-                    <Link to={'/products'}>товары</Link>
+                  <Typography.Paragraph>Воспользуйтесь вкладкой <Link to={'/products'}>товары</Link> чтобы найти всё, что нужно :)
+                    
                   </Typography.Paragraph>
                   <List dataSource={[]}/>
                 </div> 
@@ -102,15 +92,17 @@ const CartPage = observer(() => {
               <Row gutter={[12, 12]} align={'middle'} justify={'space-between'} >
                <Row>
                <Col span={20}><h3>Ваша корзина: {cartStore.total.totalCount} товар</h3></Col>
-                <Col span={20}><h3>Товары {`(${cartStore.total.totalCount})`}: {cartStore.total.totalPrice}
+                <Col span={20}><h3>Товары {`(${cartStore.total.totalCount})`}: {cartStore.total.totalPrice} руб.
                  </h3></Col>
                </Row>
-                <Col span={24}><Button onClick={onSend} disabled={cartStore.total.totalCount === 0}
-                style={{width: '100%'}}>Отправить</Button></Col>
+                <Col span={24}><Button onClick={onSend} disabled={!cartStore.total.totalCount === 0}
+                style={{width: '100%'}}>Перейти к оформлению</Button></Col>
               </Row>
             </Col>
           </Row>
         </Col>
+
+        <CartModal visible={visible} setVisible={setVisible} />
         
       </Row>
     )
