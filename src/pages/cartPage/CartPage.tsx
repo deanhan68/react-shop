@@ -26,7 +26,7 @@ const CartPage = observer(() => {
           cartStore.deleteCard(card)
         }
     })
-    
+
   }
 
   const goToBack = () => {
@@ -47,7 +47,7 @@ const CartPage = observer(() => {
   }
 
 
-  
+
   return (
       <Row>
         <Col span={24} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 20}} >
@@ -59,10 +59,10 @@ const CartPage = observer(() => {
           <Row justify={'space-between'} gutter={[5, 5]}>
             <Col span={15} style={{display: 'flex', flexDirection: 'column', gap: 10}}>
 
-              { cartStore.products.length > 0 ? 
+              { cartStore.products.length > 0 ?
                 cartStore.products.map(item => {
                   return (
-                    <Row style={{width: '100%', padding: 10, border: '1px solid grey'}} 
+                    <Row style={{width: '100%', padding: 10, border: '1px solid grey'}}
                     justify={'space-between'} align={'middle'}>
                       <Col span={3} ><Image style={{width: '100%'}} src={item.urlImg}/></Col>
                       <Col span={4} style={{display: 'flex', gap: 10,alignItems: 'center'}}>
@@ -81,10 +81,10 @@ const CartPage = observer(() => {
                 })
                 : <div>
                   <Typography.Paragraph>Воспользуйтесь вкладкой <Link to={'/products'}>товары</Link> чтобы найти всё, что нужно :)
-                    
+
                   </Typography.Paragraph>
                   <List dataSource={[]}/>
-                </div> 
+                </div>
               }
 
             </Col>
@@ -95,7 +95,7 @@ const CartPage = observer(() => {
                 <Col span={20}><h3>Товары {`(${cartStore.total.totalCount})`}: {cartStore.total.totalPrice} руб.
                  </h3></Col>
                </Row>
-                <Col span={24}><Button onClick={onSend} disabled={!cartStore.total.totalCount === 0}
+                <Col span={24}><Button onClick={onSend} disabled={cartStore.total.totalCount === 0}
                 style={{width: '100%'}}>Перейти к оформлению</Button></Col>
               </Row>
             </Col>
@@ -103,10 +103,9 @@ const CartPage = observer(() => {
         </Col>
 
         <CartModal visible={visible} setVisible={setVisible} />
-        
+
       </Row>
     )
   })
-  
+
   export default CartPage
-  
