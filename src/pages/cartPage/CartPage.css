@@ -1,3 +1,12 @@
 .ant-image {
     width: 80px;
-}
+} 
+
+.cart-footer {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: auto; /* Отправляет футер в конец страницы */
+    border-top: 2px solid #ffffff;
+  }

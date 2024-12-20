@@ -34,7 +34,6 @@ export const CartModal = observer(({visible, setVisible}:
 
     const handleOk = async () => {
         const values= await form.validateFields()
-        console.log('values', values);
         
         setVisible(false)
 

@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 import { ICartProduct } from "stores/cartStore/types";
 import { Link, useNavigate } from "react-router-dom";
 import { CartModal } from "./CartModal";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 
 
@@ -47,8 +47,17 @@ const CartPage = observer(() => {
   }
 
 
+  const styles: any = useMemo(() => {
+    return {
+          position: cartStore.total.totalCount < 2 ? 'fixed' : 'relative',
+          bottom: 0,
+          left: 0,
+          right: 0,
+      }
+  }, [cartStore.total])
 
   return (
+    <>
       <Row>
         <Col span={24} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 20}} >
           <Typography.Title level={4}> Корзина</Typography.Title>
@@ -105,6 +114,11 @@ const CartPage = observer(() => {
         <CartModal visible={visible} setVisible={setVisible} />
 
       </Row>
+      <footer className="cart-footer" style={{...styles}}>
+         <p>© 2024 Интернет-магазин. Все права защищены.</p>
+         <p>Контакты: info@shop.shop | +7 (999) 123-45-67</p>
+       </footer>
+      </>
     )
   })
 

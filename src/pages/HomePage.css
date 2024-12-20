@@ -90,11 +90,10 @@ body, html {
 .item-card {
     background: #1f1f1f;
     text-align: center;
-    border-radius: 10px;
-    padding: 12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация */
     gap:10px;
+    border: 1px solid grey;
   }
 
 
@@ -119,16 +118,7 @@ body, html {
     background-color: #6a5acd; /* Фиолетовый фон при наведении */
   }
 
-  /* Футер */
-  .footer {
-
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    margin-top: auto; /* Отправляет футер в конец страницы */
-    border-top: 2px solid #ffffff;
-  }
+ 
 
   /* Адаптивность */
   @media (max-width: 768px) {

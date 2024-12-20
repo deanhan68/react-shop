@@ -5,8 +5,7 @@
   color: #fff;
     background: #1f1f1f;
     text-align: center;
-    border-radius: 10px;
-    padding: 12px;
+    border: 1px solid grey;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация */
     gap:10px;

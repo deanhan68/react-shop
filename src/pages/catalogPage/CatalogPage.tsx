@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { categoriesStore } from '../../stores/categories/categoriesStore'
 import { ICategories } from '../../stores/categories/types'
+import { Footer } from '../../components/footer/Footer'
 
 import './CatalogPage.css' // Подключите стили для страницы
+
 
 
 const CatalogPage = observer(() => {
@@ -21,6 +23,7 @@ const CatalogPage = observer(() => {
 
 
   return (
+    <>
     <div className="catalog-page">
       <header className="catalog-header">
         <h1>Каталог товаров</h1>
@@ -41,6 +44,8 @@ const CatalogPage = observer(() => {
         }
       </main>
     </div>
+    <Footer />
+    </>
   )
 })
 

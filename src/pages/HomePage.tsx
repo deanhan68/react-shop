@@ -6,6 +6,7 @@ import { DEFINE_SALE } from '../config/constants';
 import { observer } from 'mobx-react';
 import { useLocation } from 'react-router-dom';
 import {CarouselSlider} from "../components/carouselSlider";
+import { Footer } from '../components/footer/Footer';
 
 
 
@@ -38,11 +39,7 @@ const HomePage: React.FC = observer(() => {
             </div>
           </div>
 
-          {/* Футер */}
-          <footer className="footer">
-            <p>© 2024 Интернет-магазин. Все права защищены.</p>
-            <p>Контакты: info@shop.shop | +7 (999) 123-45-67</p>
-          </footer>
+         <Footer />
         </div>
       </>
   )
